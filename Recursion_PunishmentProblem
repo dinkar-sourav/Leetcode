@@ -1,0 +1,14 @@
+bool solve(string& s,int target,int idx,int sum){
+        if(idx>=s.length()){
+            return sum==target;
+        }
+        if(sum>target) return false;
+
+        for(int j=idx;j<s.length();j++){
+            string pstr=s.substr(idx,j-idx+1);
+            int pstrval=stoi(pstr);
+
+            if(solve(s,target,j+1,sum+pstrval)) return true;
+        }
+        return false;
+    }
